@@ -15,7 +15,7 @@
     <meta property="og:title" content="VizPro:Insights - Advanced Data Visualization Solutions">
     <meta property="og:description" content="Transform your data into actionable insights with our AI-powered analytics dashboard solutions.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-website-url.com">
+    <meta property="og:url" content="https://github-cyrus.github.io/VizPro-Insights-Hub/">
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
@@ -1109,6 +1109,219 @@ https://templatemo.com/tm-569-edu-meeting
         height: 40px;
     }
 }
+
+/* Cart Styles */
+.cart-icon a {
+    font-size: 1rem; /* Reduce the font size */
+    padding: 3px; /* Adjust padding if needed */
+}
+
+.cart-count {
+    font-size: 0.7rem; /* Reduce font size */
+    padding: 2px 4px; /* Adjust padding */
+    min-width: 14px; /* Reduce width */
+    height: 14px; /* Reduce height */
+    line-height: 14px; /* Ensure proper alignment */
+}
+
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #1d1c1b;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    border-radius: 50%;
+    min-width: 22px;
+    min-height: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 2px solid #1a1a1a;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.cart-count:not(:empty) {
+    transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+    .cart-count {
+        font-size: 0.75rem;
+        min-width: 20px;
+        min-height: 20px;
+        padding: 3px 6px;
+    }
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: #1a1a1a;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    color: #fff;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.cart-item-price {
+    color: #f5a425;
+    margin: 5px 0;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+@media (max-width: 576px) {
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Add to Cart Button Styles */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+.add-to-cart-btn i {
+    font-size: 1.1rem;
+}
+
+.add-to-cart-btn:active {
+    transform: translateY(0);
+}
 </style>
   </head>
 
@@ -1155,7 +1368,13 @@ https://templatemo.com/tm-569-edu-meeting
                           <li><a href="Vizpro Expertise/index.html">Expertise</a></li>
                           <li><a href="Form/workspace.html">Workspace</a></li>
                           <li class="scroll-to-section"><a href="#courses">Premium</a></li> 
-                          <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
+                          <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+                          <li class="cart-icon">
+                              <a href="#" id="cart-trigger">
+                                  <i class="fas fa-shopping-cart"></i>
+                                  <span class="cart-count">0</span>
+                              </a>
+                          </li>
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>
@@ -1167,6 +1386,28 @@ https://templatemo.com/tm-569-edu-meeting
       </div>
   </header>
   <!-- ***** Header Area End ***** -->
+
+  <!-- Shopping Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+          <h3>Shopping Cart</h3>
+          <button class="close-cart" id="close-cart">
+              <i class="fas fa-times"></i>
+          </button>
+      </div>
+      <div class="cart-items" id="cart-items">
+          <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-footer">
+          <div class="cart-total">
+              <span>Total:</span>
+              <span class="total-amount">₹0</span>
+          </div>
+          <button class="checkout-btn" id="checkout-btn">
+              Proceed to Checkout
+          </button>
+      </div>
+  </div>
 
   <!-- ***** Main Banner Area Start ***** -->
   <section class="section main-banner" id="top" data-section="section1">
@@ -1299,6 +1540,9 @@ https://templatemo.com/tm-569-edu-meeting
                       </div>
                     </div>
                   </div>
+                  <button class="add-to-cart-btn" onclick="addToCart('Analytical Dashboards', 4999, 'assets/images/service-icon-01.png')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -1336,6 +1580,9 @@ https://templatemo.com/tm-569-edu-meeting
                       </div>
                     </div>
                   </div>
+                  <button class="add-to-cart-btn" onclick="addToCart('Financial Dashboards', 5999, 'assets/images/service-icon-02.png')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -1373,6 +1620,9 @@ https://templatemo.com/tm-569-edu-meeting
                       </div>
                     </div>
                   </div>
+                  <button class="add-to-cart-btn" onclick="addToCart('Customer Service Dashboards', 3999, 'assets/images/service-icon-03.png')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -1680,6 +1930,116 @@ https://templatemo.com/tm-569-edu-meeting
             loadingText.style.display = 'none';
             submitButton.disabled = false;
         }, 2000);
+    });
+    </script>
+
+    <!-- Cart functionality -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartTrigger = document.getElementById('cart-trigger');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartCount = document.querySelector('.cart-count');
+        const totalAmount = document.querySelector('.total-amount');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        // Cart state
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart count
+        function updateCartCount() {
+            cartCount.textContent = cart.length;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.title}</h4>
+                            <div class="cart-item-price">₹${item.price}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            totalAmount.textContent = `₹${total}`;
+            updateCartCount();
+        }
+
+        // Add to cart function
+        window.addToCart = function(title, price, image) {
+            const existingItem = cart.find(item => item.title === title);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    title,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartDisplay();
+            showToast('Item added to cart!', 'success');
+        };
+
+        // Update quantity
+        window.updateQuantity = function(index, change) {
+            cart[index].quantity += change;
+            
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            
+            updateCartDisplay();
+        };
+
+        // Toggle cart sidebar
+        cartTrigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartSidebar.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', function() {
+            cartSidebar.classList.remove('active');
+        });
+
+        // Close cart when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!cartSidebar.contains(e.target) && !cartTrigger.contains(e.target)) {
+                cartSidebar.classList.remove('active');
+            }
+        });
+
+        // Checkout button
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!', 'error');
+                return;
+            }
+            // Add your checkout logic here
+            showToast('Proceeding to checkout...', 'success');
+            cartSidebar.classList.remove('active');
+        });
+
+        // Initialize cart display
+        updateCartDisplay();
     });
     </script>
 </body>
