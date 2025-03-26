@@ -223,41 +223,94 @@ def visualize_data():
     if current_data is None:
         return jsonify({'error': 'No data uploaded'})
     
-    insights = []
+    visualizations = {
+        'distribution': [],
+        'correlation': None,
+        'feature_relationships': [],
+        'feature_importance': None
+    }
     
-    # Numerical columns distribution
-    for col in current_data.select_dtypes(include=[np.number]).columns:
-        fig = px.histogram(current_data, x=col, title=f'Distribution of {col}')
-        fig.update_layout(
+    # Distribution plots for numerical columns
+    numerical_cols = current_data.select_dtypes(include=[np.number]).columns
+    for col in numerical_cols:
+        fig = px.histogram(
+            current_data, 
+            x=col,
+            title=f'Distribution of {col}',
             template='plotly_dark',
-            paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)',
-            font={'color': '#ffffff'}
+            color_discrete_sequence=['#4facfe']
         )
-        insights.append({
-            'type': 'histogram',
-            'title': f'Distribution of {col}',
+        fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0.05)',
+            font={'color': '#ffffff'},
+            margin=dict(l=20, r=20, t=40, b=20),
+            showlegend=False
+        )
+        visualizations['distribution'].append({
+            'name': col,
             'plot': json.loads(json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder))
         })
     
     # Correlation matrix
-    correlation = current_data.select_dtypes(include=[np.number]).corr()
-    fig = px.imshow(correlation, 
-                    title='Correlation Matrix',
-                    color_continuous_scale='RdBu')
-    fig.update_layout(
-        template='plotly_dark',
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font={'color': '#ffffff'}
-    )
-    insights.append({
-        'type': 'heatmap',
-        'title': 'Correlation Matrix',
-        'plot': json.loads(json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder))
-    })
+    if len(numerical_cols) > 1:
+        correlation = current_data[numerical_cols].corr()
+        fig = px.imshow(
+            correlation,
+            title='Feature Correlation Matrix',
+            color_continuous_scale=['#00f2fe', '#ffffff', '#4facfe'],
+            template='plotly_dark'
+        )
+        fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0.05)',
+            font={'color': '#ffffff'},
+            margin=dict(l=20, r=20, t=40, b=20)
+        )
+        visualizations['correlation'] = json.loads(json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder))
     
-    return jsonify(insights)
+    # Scatter plots for feature relationships
+    if len(numerical_cols) > 1:
+        for i, col1 in enumerate(numerical_cols[:-1]):
+            col2 = numerical_cols[i + 1]
+            fig = px.scatter(
+                current_data,
+                x=col1,
+                y=col2,
+                title=f'{col1} vs {col2}',
+                template='plotly_dark',
+                color_discrete_sequence=['#4facfe']
+            )
+            fig.update_layout(
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0.05)',
+                font={'color': '#ffffff'},
+                margin=dict(l=20, r=20, t=40, b=20)
+            )
+            visualizations['feature_relationships'].append({
+                'name': f'{col1} vs {col2}',
+                'plot': json.loads(json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder))
+            })
+    
+    # Add insights
+    insights = []
+    
+    # Correlation insights
+    if len(numerical_cols) > 1:
+        correlation = current_data[numerical_cols].corr()
+        np.fill_diagonal(correlation.values, 0)
+        strongest_corr = np.abs(correlation).unstack().sort_values(ascending=False)[:5]
+        for (col1, col2), corr_value in strongest_corr.items():
+            if col1 != col2:
+                insights.append({
+                    'type': 'correlation',
+                    'text': f'Strong {("positive" if corr_value > 0 else "negative")} correlation ({corr_value:.2f}) between {col1} and {col2}'
+                })
+    
+    return jsonify({
+        'visualizations': visualizations,
+        'insights': insights
+    })
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)

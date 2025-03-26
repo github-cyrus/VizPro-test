@@ -1,37 +1,56 @@
- // Import the functions you need from the SDKs you need
- import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
- import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
- import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
- 
- const firebaseConfig = {
-    apiKey: "AIzaSyBWRHIx0Vvo3UrcF-wcmSe99VALu9e0iiM",
-    authDomain: "vizpro-9dce2.firebaseapp.com",
-    databaseURL: "https://vizpro-9dce2-default-rtdb.firebaseio.com",
-    projectId: "vizpro-9dce2",
-    storageBucket: "vizpro-9dce2.appspot.com",
-    messagingSenderId: "440136532551",
-    appId: "1:440136532551:web:f5980b3c17ef65b10b6762"
-  };
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
 
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
+const firebaseConfig = {
+   apiKey: "AIzaSyBWRHIx0Vvo3UrcF-wcmSe99VALu9e0iiM",
+   authDomain: "vizpro-9dce2.firebaseapp.com",
+   databaseURL: "https://vizpro-9dce2-default-rtdb.firebaseio.com",
+   projectId: "vizpro-9dce2",
+   storageBucket: "vizpro-9dce2.firebasestorage.app",
+   messagingSenderId: "440136532551",
+   appId: "1:440136532551:web:f5980b3c17ef65b10b6762"
+ };
 
- function showMessage(message, divId){
-    var messageDiv=document.getElementById(divId);
-    messageDiv.style.display="block";
-    messageDiv.innerHTML=message;
-    messageDiv.style.opacity=1;
-    setTimeout(function(){
-        messageDiv.style.opacity=0;
-    },5000);
- }
- const signUp=document.getElementById('submitSignUp');
- signUp.addEventListener('click', (event)=>{
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+function showMessage(message, divId){
+   var messageDiv=document.getElementById(divId);
+   messageDiv.style.display="block";
+   messageDiv.innerHTML=message;
+   messageDiv.style.opacity=1;
+   setTimeout(function(){
+       messageDiv.style.opacity=0;
+   },5000);
+}
+const signUp=document.getElementById('submitSignUp');
+signUp.addEventListener('click', (event)=>{
     event.preventDefault();
-    const email=document.getElementById('rEmail').value;
+    const email=document.getElementById('rEmail').value.trim();
     const password=document.getElementById('rPassword').value;
-    const firstName=document.getElementById('fName').value;
-    const lastName=document.getElementById('lName').value;
+    const firstName=document.getElementById('fName').value.trim();
+    const lastName=document.getElementById('lName').value.trim();
+
+    // Input validation
+    if (!email || !password || !firstName || !lastName) {
+        showMessage('All fields are required', 'signUpMessage');
+        return;
+    }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showMessage('Please enter a valid email address', 'signUpMessage');
+        return;
+    }
+
+    // Password length validation
+    if (password.length < 6) {
+        showMessage('Password must be at least 6 characters long', 'signUpMessage');
+        return;
+    }
 
     const auth=getAuth();
     const db=getFirestore();

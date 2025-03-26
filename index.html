@@ -5,11 +5,25 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="TemplateMo">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <title> VizPro:Insights HTML5 Template</title>
+    
+    <!-- Enhanced metadata -->
+    <meta name="description" content="VizPro:Insights - Advanced data visualization and AI-powered analytics dashboard solutions for businesses. Transform your data into actionable insights with our cutting-edge tools.">
+    <meta name="author" content="Cyrus">
+    <meta name="keywords" content="data visualization, business analytics, AI dashboard, machine learning, data insights, business intelligence">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="VizPro:Insights - Advanced Data Visualization Solutions">
+    <meta property="og:description" content="Transform your data into actionable insights with our AI-powered analytics dashboard solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-website-url.com">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+    
+    <title>VizPro:Insights - Advanced Data Visualization Solutions</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -840,6 +854,261 @@ https://templatemo.com/tm-569-edu-meeting
 .right-icons ul li:last-child {
     margin-left: auto;
 }
+
+.thank-you-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.thank-you-popup.active {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(45, 45, 45, 0.98) 100%);
+    padding: 60px 50px;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 150px rgba(79, 172, 254, 0.15);
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    transform: scale(0.7) translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+.thank-you-popup.active .popup-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Add animated background pattern */
+.popup-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 90%, rgba(79, 172, 254, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 20%, rgba(0, 242, 254, 0.1) 0%, transparent 20%);
+    opacity: 0.6;
+    z-index: 1;
+    animation: patternFloat 10s ease-in-out infinite;
+}
+
+.popup-logo {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 35px;
+    position: relative;
+    z-index: 2;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.popup-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(79, 172, 254, 0.4) 0%, transparent 70%);
+    animation: shadowPulse 3s ease-in-out infinite;
+    filter: blur(5px);
+}
+
+.popup-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 20px rgba(79, 172, 254, 0.3));
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 15px 20px rgba(79, 172, 254, 0.3)); }
+    50% { filter: drop-shadow(0 15px 25px rgba(79, 172, 254, 0.5)); }
+}
+
+@keyframes shadowPulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.8; transform: translateX(-50%) scale(1.2); }
+}
+
+@keyframes patternFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.02); }
+}
+
+.popup-content h3 {
+    color: #ffffff;
+    font-size: 36px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ffffff, #4facfe, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.popup-content p {
+    color: #b0b0b0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    position: relative;
+    z-index: 2;
+}
+
+.popup-content p:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.close-popup {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: rgba(79, 172, 254, 0.1);
+    border: none;
+    color: #4facfe;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 2;
+}
+
+.close-popup:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: rgba(79, 172, 254, 0.2);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add success checkmark animation */
+.popup-content::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 200px;
+    color: rgba(79, 172, 254, 0.1);
+    z-index: 1;
+    animation: checkmarkAppear 0.6s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes checkmarkAppear {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+}
+
+@media (max-width: 576px) {
+    .popup-content {
+        padding: 40px 25px;
+    }
+    
+    .popup-logo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 30px;
+    }
+    
+    .popup-content h3 {
+        font-size: 32px;
+    }
+    
+    .popup-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Logo Styles */
+.header-area .logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.header-area .logo img {
+    height: 55px;
+    width: auto;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.header-area.header-sticky .logo img {
+    height: 45px;
+}
+
+@media (max-width: 767px) {
+    .header-area .logo img {
+        height: 45px;
+    }
+    .header-area.header-sticky .logo img {
+        height: 40px;
+    }
+}
 </style>
   </head>
 
@@ -875,6 +1144,7 @@ https://templatemo.com/tm-569-edu-meeting
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
                       <a href="index.html" class="logo">
+                          <img src="assets/logo.png" alt="VizPro:Insights Logo" style="height: 55px; margin-right: 15px;">
                           VizPro:Insights
                       </a>
                       <!-- ***** Logo End ***** -->
@@ -1169,6 +1439,10 @@ https://templatemo.com/tm-569-edu-meeting
     </div>
   </section>
 
+
+  <!-- .\start_apps.ps1 -->
+
+
   <section class="contact-us" id="contact">
     <div class="contact-container">
         <div class="contact-box">
@@ -1179,7 +1453,14 @@ https://templatemo.com/tm-569-edu-meeting
                     <p class="text-muted">We're here to help and answer any questions you might have</p>
                 </div>
                 
-                <form id="contact" action="" class="contact-form">
+                <form id="contact" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <!-- Add Web3Forms access key -->
+                    <input type="hidden" name="access_key" value="f00362ea-6508-4bf0-a84e-c53ba729bfe6">
+                    <!-- Add success redirect to same page -->
+                    <input type="hidden" name="redirect" value="false">
+                    <!-- Add form submission handler -->
+                    <input type="hidden" name="from_name" value="VizPro Contact Form">
+                    
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="form-floating">
@@ -1207,7 +1488,10 @@ https://templatemo.com/tm-569-edu-meeting
                         </div>
                         <div class="col-12 text-center">
                             <button type="submit" id="form-submit" class="btn-custom">
-                                Send Message <i class="fas fa-paper-plane ms-2"></i>
+                                <span class="submit-text">Send Message <i class="fas fa-paper-plane ms-2"></i></span>
+                                <span class="loading-text" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -1279,8 +1563,22 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
     </div>
 </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-  <script src="./mail.js"></script>
+
+<!-- Add this right after your contact form section -->
+<div class="thank-you-popup" id="thankYouPopup">
+    <div class="popup-content">
+        <div class="popup-logo">
+            <img src="assets/logo.png" alt="VizPro Logo">
+        </div>
+        <h3>Thank You!</h3>
+        <p>Your message has been sent successfully.</p>
+        <p>We'll get back to you soon!</p>
+        <button class="close-popup" onclick="closeThankYouPopup()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>
+
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -1339,14 +1637,50 @@ https://templatemo.com/tm-569-edu-meeting
           checkSection();
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-    <script src="./mail.js"></script>
     <script>
       AOS.init({
         duration: 800,
         easing: 'ease-in-out',
         once: true
       });
+    </script>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+    <script>
+    function showThankYouPopup() {
+        const popup = document.getElementById('thankYouPopup');
+        popup.classList.add('active');
+    }
+
+    function closeThankYouPopup() {
+        const popup = document.getElementById('thankYouPopup');
+        popup.classList.remove('active');
+    }
+
+    // Modify the form submission handling
+    const form = document.getElementById('contact');
+    const submitButton = document.getElementById('form-submit');
+    const submitText = submitButton.querySelector('.submit-text');
+    const loadingText = submitButton.querySelector('.loading-text');
+
+    form.addEventListener('submit', function(e) {
+        // Show loading state
+        submitText.style.display = 'none';
+        loadingText.style.display = 'inline-block';
+        submitButton.disabled = true;
+
+        // Let Web3Forms handle the submission
+        setTimeout(function() {
+            showThankYouPopup();
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button state
+            submitText.style.display = 'inline-block';
+            loadingText.style.display = 'none';
+            submitButton.disabled = false;
+        }, 2000);
+    });
     </script>
 </body>
 
