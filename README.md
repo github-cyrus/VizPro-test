@@ -30,12 +30,12 @@ Cloud & Hosting: AWS / Google Cloud / Firebase
 bash
 Copy
 Edit
-git clone https://github.com/github-cyrus/vizpro-insights-hub.git
+git clone [https://github.com/github-cyrus/vizpro-insights-hub.git](https://github-cyrus.github.io/VizPro-Insights-Hub/)
 cd vizpro-insights-hub
 npm install  # Install dependencies
 npm start    # Run the application
 ⚡ Demo & Usage
-Live Demo 🔗 (Update with your hosted link)
+Live Demo 🔗 [(Update with your hosted link)](https://github-cyrus.github.io/VizPro-Insights-Hub/)
 
 📌 Future Enhancements
 ✔️ AI Chatbot for Automated Data Analysis
@@ -46,7 +46,7 @@ Live Demo 🔗 (Update with your hosted link)
 🤝 Contributing
 Want to improve VizPro? Check out our CONTRIBUTING.md for guidelines.
 
-📩 Contact: chandrashekhar.vizpro@gmail.com (or any preferred contact)
+📩 Contact: cyrus.dev.ds@gmail.com (or any preferred contact)
 
 💡 Star ⭐ the repo if you find it useful!
 
