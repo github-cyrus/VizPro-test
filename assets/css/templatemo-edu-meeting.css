@@ -199,6 +199,36 @@ body {
   color: #fff;
 }
 
+/* Add to Cart Button Styles */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+.add-to-cart-btn i {
+    font-size: 1.1rem;
+}
+
+.add-to-cart-btn:active {
+    transform: translateY(0);
+}
 
 /* 
 ---------------------------------------------
